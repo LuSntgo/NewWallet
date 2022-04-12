@@ -1,5 +1,5 @@
 import connection from "../database.js";
-import * as userRepository from "../user/userRepository.js";
+import * as userRepository from "../repositories/userRepository.js";
 
 export async function signUp({ name, email, password }) {
   const existingUsers = await connection.query(

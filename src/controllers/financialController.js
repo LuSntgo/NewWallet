@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import connection from "./database.js";
+import * as financialService from "../services/financialService.js";
 
 export async function createFinancialEvents(req, res) {
   try {
@@ -32,11 +33,7 @@ export async function createFinancialEvents(req, res) {
     if (value < 0) {
       return res.sendStatus(422);
     }
-
-    await connection.query(
-      `INSERT INTO "financialEvents" ("userId", "value", "type") VALUES ($1, $2, $3)`,
-      [user.id, value, type]
-    );
+    await financialService.login(req.body);
 
     res.sendStatus(201);
   } catch (err) {

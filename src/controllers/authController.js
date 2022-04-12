@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import * as authService from "../user/authService.js";
+import * as authService from "../services/authService.js";
 
 export async function signIn(req, res) {
   try {
@@ -9,7 +9,7 @@ export async function signIn(req, res) {
       return res.sendStatus(422);
     }
 
-    await authService.login(req.body);
+    await authService.signIn(req.body);
 
     const token = jwt.sign(
       {

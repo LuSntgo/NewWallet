@@ -1,4 +1,3 @@
-import connection from "../database.js";
 import bcrypt from "bcrypt";
 import * as authRepository from "../user/authRepository.js";
 
